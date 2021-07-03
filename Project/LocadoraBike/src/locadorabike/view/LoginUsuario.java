@@ -103,7 +103,7 @@ public class LoginUsuario extends javax.swing.JFrame {
         getContentPane().add(sair, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 439, 360, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/locadorabike/view/imagens/logo_fundo.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 0, 400, 500));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 500));
 
         setSize(new java.awt.Dimension(400, 500));
         setLocationRelativeTo(null);

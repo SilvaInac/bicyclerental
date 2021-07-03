@@ -33,7 +33,7 @@ create table Acessorio(
 	id int not null auto_increment,
     protecao bool,
 	corCapacete varchar(30) not null,
-    tamanhoCapacete int not null,
+    tamanhoCapacete varchar(30) not null,
     primary key(id)
 );
 
@@ -78,6 +78,9 @@ create table Locar(
     PRIMARY KEY(idCliente, idBike, idAcessorio)
 );
 
+update Usuario set adm = 1 where cpf = 78978978912;
+
 select * from Usuario;
 select * from Franquia;
 select * from Bicicleta;
+select * from Acessorio;

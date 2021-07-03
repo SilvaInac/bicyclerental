@@ -13,7 +13,7 @@ public class Acessorio {
     
        private int id_acessorio;
        private String cor_cap;
-       private int tam_cap;
+       private String tam_cap;
        private boolean protecao;
 
     public int getId_acessorio() {
@@ -32,11 +32,11 @@ public class Acessorio {
         this.cor_cap = cor_cap;
     }
 
-    public int getTam_cap() {
+    public String getTam_cap() {
         return tam_cap;
     }
 
-    public void setTam_cap(int tam_cap) {
+    public void setTam_cap(String tam_cap) {
         this.tam_cap = tam_cap;
     }
 
@@ -47,7 +47,7 @@ public class Acessorio {
     public void setProtecao(boolean protecao) {
         this.protecao = protecao;
     }
-       
-       
-    
+
+
+      
 }
