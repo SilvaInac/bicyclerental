@@ -47,7 +47,12 @@ public class Acessorio {
     public void setProtecao(boolean protecao) {
         this.protecao = protecao;
     }
+
+    @Override
+    public String toString() {
+        return "Acessorio " + Integer.toString(id_acessorio); 
+    }
        
-       
+    
     
 }

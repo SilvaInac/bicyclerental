@@ -5,7 +5,9 @@
  */
 package locadorabike.view;
 
+import javax.swing.JOptionPane;
 import locadorabike.controller.buscaDAO;
+import locadorabike.model.Acessorio;
 import locadorabike.model.Bicicleta;
 import locadorabike.model.Franquia;
 import locadorabike.model.Usuario;
@@ -210,7 +212,15 @@ public class Locar extends javax.swing.JFrame {
         jLabel5.setText("ACESSÓRIO:");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 100, 30));
 
-        acessorio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        acessorio.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+                acessorioPopupMenuWillBecomeInvisible(evt);
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
         jPanel2.add(acessorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 266, 30));
 
         corcap.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -250,6 +260,11 @@ public class Locar extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/locadorabike/view/imagens/locar1_30x30.png"))); // NOI18N
         jButton1.setText("LOCAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, 170, 40));
 
         jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -396,6 +411,7 @@ public class Locar extends javax.swing.JFrame {
 
     private void escolha1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_escolha1ItemStateChanged
         // TODO add your handling code here:
+        //função aberta errada
         
     }//GEN-LAST:event_escolha1ItemStateChanged
 
@@ -411,17 +427,28 @@ public class Locar extends javax.swing.JFrame {
 
     private void escolha1PopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_escolha1PopupMenuWillBecomeVisible
         // TODO add your handling code here:
-        bike.removeAllItems();
+        bike.removeAllItems();        
+        modelo.setText("");
+        cor.setText("");
+        aro.setText("");
+        acessorio.removeAllItems();
+        corcap.setText("");
+        tamanhocap.setText("");
     }//GEN-LAST:event_escolha1PopupMenuWillBecomeVisible
 
     private void escolha1PopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_escolha1PopupMenuWillBecomeInvisible
         // TODO add your handling code here:
         Franquia frq = (Franquia) escolha1.getSelectedItem();
-        Bicicleta biciaux = new Bicicleta();
         if(buscas.buscarBikePorFranquia(frq.getCnpj()) != null){
             for(Bicicleta bici: buscas.buscarBikePorFranquia(frq.getCnpj())){
                 bike.addItem(bici);
                 System.out.println(bici.getCor());
+            }
+        }
+        if(buscas.buscarAcessorioPorFranquia(frq.getCnpj()) != null){
+            for(Acessorio aces: buscas.buscarAcessorioPorFranquia(frq.getCnpj())){
+                acessorio.addItem(aces);
+                System.out.println(aces.getCor_cap());
             }
         }
     }//GEN-LAST:event_escolha1PopupMenuWillBecomeInvisible
@@ -431,7 +458,6 @@ public class Locar extends javax.swing.JFrame {
         Bicicleta bici = (Bicicleta) bike.getSelectedItem();
         if(bici == null){
             modelo.setText("");
-            System.out.println("");
             cor.setText("");
             aro.setText("");
         }
@@ -442,6 +468,30 @@ public class Locar extends javax.swing.JFrame {
             aro.setText(Integer.toString(bici.getAro()));
         }
     }//GEN-LAST:event_bikePopupMenuWillBecomeInvisible
+
+    private void acessorioPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_acessorioPopupMenuWillBecomeInvisible
+        // TODO add your handling code here:
+        Acessorio ac = (Acessorio) acessorio.getSelectedItem();
+        if(ac == null){
+            corcap.setText("");
+            tamanhocap.setText("");
+        }
+        else{
+            corcap.setText(ac.getCor_cap());
+            System.out.println(ac.getCor_cap());
+            tamanhocap.setText(Integer.toString(ac.getTam_cap()));
+        }
+    }//GEN-LAST:event_acessorioPopupMenuWillBecomeInvisible
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if(!atualuser.getSenha().equals(JOptionPane.showInputDialog("Digite a Senha:"))){
+            JOptionPane.showMessageDialog(this, "Senha errada tente novamente!", "Senha Inválida", 2);
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Senha correta!", "Senha OK", 1);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -479,7 +529,7 @@ public class Locar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> acessorio;
+    private javax.swing.JComboBox<Object> acessorio;
     private javax.swing.JLabel aro;
     private javax.swing.JLabel aro2;
     private javax.swing.JComboBox<Object> bike;

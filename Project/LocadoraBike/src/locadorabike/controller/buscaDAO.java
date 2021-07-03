@@ -165,7 +165,7 @@ public class buscaDAO extends ConnectionDAO{
         }
         return listaDeBike;
     }
-/*
+    
     public ArrayList<Acessorio> buscarAcessorioPorFranquia(long cnpj) {
     
         ArrayList<Acessorio> listaDeAcessorio = new ArrayList<>();
@@ -182,11 +182,10 @@ public class buscaDAO extends ConnectionDAO{
             st = con.createStatement();
             while (rs.next()) {
                 Acessorio AcessorioAux = new Acessorio();
-                AcessorioAux.id_acessorio(rs.getInt("id"));
-                AcessorioAux.setModelo(rs.getString("modelo"));
-                AcessorioAux.setAro(rs.getInt("aro"));
-                AcessorioAux.setCor(rs.getString("cor"));
-                AcessorioAux.setLocada(rs.getBoolean("alocada"));
+                AcessorioAux.setId_acessorio(rs.getInt("id"));
+                AcessorioAux.setCor_cap(rs.getString("corCapacete"));
+                AcessorioAux.setTam_cap(rs.getInt("tamanhoCapacete"));
+                AcessorioAux.setProtecao(rs.getBoolean("protecao"));
                 
                 listaDeAcessorio.add(AcessorioAux);
             }
@@ -204,5 +203,4 @@ public class buscaDAO extends ConnectionDAO{
         }
         return listaDeAcessorio;
     }
-    */
 }
