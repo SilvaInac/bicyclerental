@@ -11,9 +11,43 @@ package locadorabike.model;
  */
 public class Acessorio {
     
-       public int id_acessorio;
-       public String cor_cap;
-       public int tam_cap;
-       public boolean protecao;
+       private int id_acessorio;
+       private String cor_cap;
+       private int tam_cap;
+       private boolean protecao;
+
+    public int getId_acessorio() {
+        return id_acessorio;
+    }
+
+    public void setId_acessorio(int id_acessorio) {
+        this.id_acessorio = id_acessorio;
+    }
+
+    public String getCor_cap() {
+        return cor_cap;
+    }
+
+    public void setCor_cap(String cor_cap) {
+        this.cor_cap = cor_cap;
+    }
+
+    public int getTam_cap() {
+        return tam_cap;
+    }
+
+    public void setTam_cap(int tam_cap) {
+        this.tam_cap = tam_cap;
+    }
+
+    public boolean isProtecao() {
+        return protecao;
+    }
+
+    public void setProtecao(boolean protecao) {
+        this.protecao = protecao;
+    }
+       
+       
     
 }
