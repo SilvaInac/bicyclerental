@@ -107,9 +107,9 @@ public class casdastroDAO extends ConnectionDAO{
         String sql = "INSERT INTO Usuario (protecao, corCapacete, tamanhoCapacete) values(?,?,?)";
         try {
             pst = con.prepareStatement(sql);
-            pst.setBoolean(1, itens.protecao);
-            pst.setInt(2, itens.tam_cap);
-            pst.setString(3, itens.cor_cap);
+            pst.setBoolean(1, itens.isProtecao());
+            pst.setInt(2, itens.getTam_cap());
+            pst.setString(3, itens.getCor_cap());
             
             pst.execute();
             sucesso = true;
